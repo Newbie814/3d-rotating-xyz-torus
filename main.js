@@ -23,7 +23,7 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const geometry = new THREE.TorusGeometry(9, 4, 16, 200);
 const material = new THREE.MeshStandardMaterial({
   color: 0x91e5f6,
 });
@@ -48,12 +48,14 @@ animate();
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const material = new THREE.MeshStandardMaterial({ color: 0xffdd99 });
+  // const material2 = new THREE.MeshStandardMaterial({ color: 0xa9d3ff });
+  // const material3 = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
+    .map(() => THREE.MathUtils.randFloatSpread(50));
 
   star.position.set(x, y, z);
   scene.add(star);
@@ -61,10 +63,10 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-// const spaceTexture = new THREE.TextureLoader().load(
-//   'wp2647127-space-wallpaper-hd.jpg'
-// );
-// scene.background = spaceTexture;
+const spaceTexture = new THREE.TextureLoader().load(
+  'https://res.cloudinary.com/dylvkdabj/image/upload/v1646514283/website%20pics%20family/wp2647127-space-wallpaper-hd_irkddn.jpg'
+);
+scene.background = spaceTexture;
 
 function animate() {
   requestAnimationFrame(animate);
